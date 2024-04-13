@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main">
+        <div class="logo">
+            <nav>
+                <img src="logo-brand-name-kaycodes-minimalist-gold-and-white-OIvFB308RxCnVzMZTVjdQA-CNa-q96_TX6MtStBKKU6nw-removebg-preview.png" class="logo-img">
+                <ul>
+                    <li><a href="/portfolio.html">Home</a></li>
+                    <li><a href="/about.html">About Me</a></li>
+                    <li><a href="/contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    <div id="contact">
+        <div class="contact-info">
+            <div class="left">
+                <h1 class="sub">Contact Me</h1>
+                <p>Johannesburg, Gauteng
+                </p>
+            </div>
+            <div class="right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your name" required>
+                    <input type="email" name="Email" placeholder="Your email" required>
+                    <textarea name="Message"  rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxFDbp41kgUB6X0NUJfZ-nil7myIEjH8IXfDmlC-AEH7sJb6-SRWPmGX0vpIiLu23A2/exec'
+    const form = document.forms['submit-to-google-sheet']
+    
+    form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+    })
+</script>
+</body>
+</html>
